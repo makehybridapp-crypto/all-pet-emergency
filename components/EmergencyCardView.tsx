@@ -12,7 +12,7 @@ export default function EmergencyCardView({ card }: EmergencyCardViewProps) {
   const [isImageModalOpen, setIsImageModalOpen] = useState(false);
 
   const formatPhoneNumber = (phone: string | null) => {
-    if (!phone) return '정보 없음';
+    if (!phone) return '情報なし';
     // 전화번호 포맷팅 (010-1234-5678)
     const cleaned = phone.replace(/\D/g, '');
     if (cleaned.length === 11) {
@@ -39,8 +39,8 @@ export default function EmergencyCardView({ card }: EmergencyCardViewProps) {
               </svg>
             </div>
             <div>
-              <h1 className="text-3xl font-bold mb-1">긴급 연락 정보</h1>
-              <p className="text-red-100 text-sm">이 반려동물을 발견하셨나요?</p>
+              <h1 className="text-3xl font-bold mb-1">緊急連絡情報</h1>
+              <p className="text-red-100 text-sm">このペットを見つけましたか？</p>
             </div>
           </div>
         </div>
@@ -58,7 +58,7 @@ export default function EmergencyCardView({ card }: EmergencyCardViewProps) {
                 >
                   <Image 
                     src={card.avatar_url} 
-                    alt={card.public_pet_name || '반려동물'}
+                    alt={card.public_pet_name || 'ペット'}
                     fill
                     className="object-cover"
                     sizes="192px"
@@ -79,11 +79,11 @@ export default function EmergencyCardView({ card }: EmergencyCardViewProps) {
               )}
               <div className="text-center">
                 <h2 className="text-3xl font-bold text-gray-900 mb-2">
-                  {card.public_pet_name || '반려동물'}
+                  {card.public_pet_name || 'ペット'}
                 </h2>
-                <p className="text-base text-gray-500">보호자를 찾고 있습니다</p>
+                <p className="text-base text-gray-500">飼い主を探しています</p>
                 {card.avatar_url && (
-                  <p className="text-xs text-gray-400 mt-2">사진을 클릭하면 크게 볼 수 있습니다</p>
+                  <p className="text-xs text-gray-400 mt-2">写真をクリックすると拡大表示できます</p>
                 )}
               </div>
             </div>
@@ -101,7 +101,7 @@ export default function EmergencyCardView({ card }: EmergencyCardViewProps) {
                     </svg>
                   </div>
                   <div className="flex-1">
-                    <p className="text-sm font-semibold text-gray-600 mb-1">보호자 연락처</p>
+                    <p className="text-sm font-semibold text-gray-600 mb-1">飼い主の連絡先</p>
                     <p className="text-2xl font-bold text-gray-900 mb-3">
                       {formatPhoneNumber(card.public_owner_phone)}
                     </p>
@@ -112,7 +112,7 @@ export default function EmergencyCardView({ card }: EmergencyCardViewProps) {
                       <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                       </svg>
-                      전화 걸기
+                      電話をかける
                     </button>
                   </div>
                 </div>
@@ -129,7 +129,7 @@ export default function EmergencyCardView({ card }: EmergencyCardViewProps) {
                     </svg>
                   </div>
                   <div className="flex-1">
-                    <p className="text-sm font-semibold text-gray-600 mb-2">동물병원 정보</p>
+                    <p className="text-sm font-semibold text-gray-600 mb-2">動物病院情報</p>
                     <p className="text-gray-800 leading-relaxed whitespace-pre-line">
                       {card.public_vet_info}
                     </p>
@@ -148,7 +148,7 @@ export default function EmergencyCardView({ card }: EmergencyCardViewProps) {
                     </svg>
                   </div>
                   <div className="flex-1">
-                    <p className="text-sm font-semibold text-gray-600 mb-2">알레르기 / 주의사항</p>
+                    <p className="text-sm font-semibold text-gray-600 mb-2">アレルギー / 注意事項</p>
                     <p className="text-gray-800 leading-relaxed whitespace-pre-line">
                       {card.public_notes}
                     </p>
@@ -161,10 +161,10 @@ export default function EmergencyCardView({ card }: EmergencyCardViewProps) {
           {/* 푸터 */}
           <div className="bg-gray-50 px-8 py-6 border-t border-gray-100">
             <p className="text-center text-sm text-gray-500">
-              💚 All-Pet 앱에서 생성된 긴급 연락 카드입니다
+              💚 All-Petアプリで作成された緊急連絡カードです
             </p>
             <p className="text-center text-xs text-gray-400 mt-2">
-              마지막 업데이트: {new Date(card.updated_at).toLocaleDateString('ko-KR')}
+              最終更新: {new Date(card.updated_at).toLocaleDateString('ja-JP')}
             </p>
           </div>
         </div>
@@ -172,9 +172,9 @@ export default function EmergencyCardView({ card }: EmergencyCardViewProps) {
         {/* 안내 메시지 */}
         <div className="mt-6 bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg">
           <p className="text-center text-gray-700 leading-relaxed">
-            🙏 이 반려동물을 발견하셨다면<br />
-            <span className="font-bold text-blue-600">위 연락처로 즉시 연락</span>해주세요.<br />
-            보호자가 애타게 기다리고 있습니다.
+            🙏 このペットを見つけた場合<br />
+            <span className="font-bold text-blue-600">上記の連絡先にすぐに連絡</span>してください。<br />
+            飼い主が心待ちにしています。
           </p>
         </div>
       </div>
@@ -189,7 +189,7 @@ export default function EmergencyCardView({ card }: EmergencyCardViewProps) {
             <button
               onClick={() => setIsImageModalOpen(false)}
               className="absolute top-4 right-4 z-10 bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-full p-3 transition-colors"
-              aria-label="닫기"
+              aria-label="閉じる"
             >
               <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -201,7 +201,7 @@ export default function EmergencyCardView({ card }: EmergencyCardViewProps) {
             >
               <img 
                 src={card.avatar_url} 
-                alt={card.public_pet_name || '반려동물'}
+                alt={card.public_pet_name || 'ペット'}
                 className="w-full h-auto max-h-[90vh] object-contain"
               />
             </div>

@@ -26,16 +26,16 @@ export async function generateMetadata({ params }: PageProps) {
 
   if (!card) {
     return {
-      title: '긴급 연락 정보를 찾을 수 없습니다',
+      title: '緊急連絡情報が見つかりません',
     };
   }
 
   return {
-    title: `🆘 ${card.public_pet_name || '반려동물'} 긴급 연락 정보`,
-    description: `${card.public_pet_name || '반려동물'}의 긴급 연락 정보입니다. 발견 시 보호자에게 연락해주세요.`,
+    title: `🆘 ${card.public_pet_name || 'ペット'} 緊急連絡情報`,
+    description: `${card.public_pet_name || 'ペット'}の緊急連絡情報です。発見時は飼い主に連絡してください。`,
     openGraph: {
-      title: `🆘 ${card.public_pet_name || '반려동물'} 긴급 연락 정보`,
-      description: `${card.public_pet_name || '반려동물'}의 긴급 연락 정보입니다. 발견 시 보호자에게 연락해주세요.`,
+      title: `🆘 ${card.public_pet_name || 'ペット'} 緊急連絡情報`,
+      description: `${card.public_pet_name || 'ペット'}の緊急連絡情報です。発見時は飼い主に連絡してください。`,
     },
   };
 }

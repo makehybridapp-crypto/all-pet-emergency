@@ -5,10 +5,10 @@ export default function NotFound() {
         <div className="mb-6">
           <h1 className="text-6xl font-bold text-gray-300 mb-4">404</h1>
           <h2 className="text-2xl font-bold text-gray-900 mb-2">
-            페이지를 찾을 수 없습니다
+            ページが見つかりません
           </h2>
           <p className="text-gray-600">
-            요청하신 페이지가 존재하지 않습니다.
+            リクエストされたページは存在しません。
           </p>
         </div>
 
@@ -16,7 +16,7 @@ export default function NotFound() {
           href="/"
           className="inline-block bg-gradient-to-r from-blue-500 to-indigo-600 text-white px-8 py-3 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all"
         >
-          홈으로 돌아가기
+          ホームに戻る
         </a>
       </div>
     </div>
