@@ -24,6 +24,7 @@ export interface EmergencyCard {
   public_vet_info: string | null;
   public_notes: string | null;
   nfc_enabled: boolean;
+  avatar_url: string | null;
   created_at: string;
   updated_at: string;
 }

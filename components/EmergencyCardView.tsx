@@ -1,5 +1,7 @@
 'use client';
 
+import { useState } from 'react';
+import Image from 'next/image';
 import { EmergencyCard } from '@/lib/supabase';
 
 interface EmergencyCardViewProps {
@@ -7,6 +9,8 @@ interface EmergencyCardViewProps {
 }
 
 export default function EmergencyCardView({ card }: EmergencyCardViewProps) {
+  const [isImageModalOpen, setIsImageModalOpen] = useState(false);
+
   const formatPhoneNumber = (phone: string | null) => {
     if (!phone) return '정보 없음';
     // 전화번호 포맷팅 (010-1234-5678)
@@ -43,17 +47,44 @@ export default function EmergencyCardView({ card }: EmergencyCardViewProps) {
 
         {/* 카드 본문 */}
         <div className="bg-white rounded-b-3xl shadow-2xl overflow-hidden">
-          {/* 펫 정보 */}
+          {/* 펫 정보 - 큰 사진 섹션 */}
           <div className="p-8 border-b border-gray-100">
-            <div className="flex items-center gap-4 mb-6">
-              <div className="bg-gradient-to-br from-green-400 to-teal-500 rounded-full w-20 h-20 flex items-center justify-center shadow-lg">
-                <span className="text-4xl">🐾</span>
-              </div>
-              <div>
-                <h2 className="text-2xl font-bold text-gray-900">
+            <div className="flex flex-col items-center gap-6 mb-6">
+              {/* 큰 펫 사진 */}
+              {card.avatar_url ? (
+                <div 
+                  className="relative w-48 h-48 rounded-3xl overflow-hidden shadow-2xl ring-4 ring-white cursor-pointer hover:scale-105 transition-transform duration-300 bg-gradient-to-br from-green-400 to-teal-500"
+                  onClick={() => setIsImageModalOpen(true)}
+                >
+                  <Image 
+                    src={card.avatar_url} 
+                    alt={card.public_pet_name || '반려동물'}
+                    fill
+                    className="object-cover"
+                    sizes="192px"
+                    unoptimized
+                  />
+                  <div className="absolute inset-0 bg-black/0 hover:bg-black/10 transition-colors flex items-center justify-center">
+                    <div className="opacity-0 hover:opacity-100 transition-opacity">
+                      <svg className="w-12 h-12 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7" />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                <div className="bg-gradient-to-br from-green-400 to-teal-500 rounded-3xl w-48 h-48 flex items-center justify-center shadow-2xl ring-4 ring-white">
+                  <span className="text-8xl">🐾</span>
+                </div>
+              )}
+              <div className="text-center">
+                <h2 className="text-3xl font-bold text-gray-900 mb-2">
                   {card.public_pet_name || '반려동물'}
                 </h2>
-                <p className="text-sm text-gray-500 mt-1">보호자를 찾고 있습니다</p>
+                <p className="text-base text-gray-500">보호자를 찾고 있습니다</p>
+                {card.avatar_url && (
+                  <p className="text-xs text-gray-400 mt-2">사진을 클릭하면 크게 볼 수 있습니다</p>
+                )}
               </div>
             </div>
           </div>
@@ -147,6 +178,36 @@ export default function EmergencyCardView({ card }: EmergencyCardViewProps) {
           </p>
         </div>
       </div>
+
+      {/* 이미지 확대 모달 */}
+      {isImageModalOpen && card.avatar_url && (
+        <div 
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-sm p-4"
+          onClick={() => setIsImageModalOpen(false)}
+        >
+          <div className="relative max-w-5xl w-full max-h-[90vh] flex items-center justify-center">
+            <button
+              onClick={() => setIsImageModalOpen(false)}
+              className="absolute top-4 right-4 z-10 bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-full p-3 transition-colors"
+              aria-label="닫기"
+            >
+              <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+            <div 
+              className="relative w-full max-h-[90vh] rounded-2xl overflow-hidden shadow-2xl"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <img 
+                src={card.avatar_url} 
+                alt={card.public_pet_name || '반려동물'}
+                className="w-full h-auto max-h-[90vh] object-contain"
+              />
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
