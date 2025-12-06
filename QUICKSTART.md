@@ -94,7 +94,7 @@ all-pet-emergency/
 ### Vercel 커스텀 도메인
 무료 도메인 대신 본인 도메인 사용 가능:
 ```
-https://emergency.all-pet.com
+https://emergency.ai-pet.com
 ```
 
 ### 성능

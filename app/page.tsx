@@ -7,7 +7,7 @@ export default function Home() {
             <span className="text-6xl">🐾</span>
           </div>
           <h1 className="text-4xl font-bold text-gray-900 mb-4">
-            All-Pet 긴급 연락 서비스
+            Ai-Pet 긴급 연락 서비스
           </h1>
           <p className="text-lg text-gray-600 leading-relaxed">
             반려동물의 긴급 연락 정보를<br />
