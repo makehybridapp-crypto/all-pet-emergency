@@ -56,10 +56,11 @@ export async function getEmergencyCard(cardId: string): Promise<EmergencyCard | 
 
   console.log('✅ Card found:', data.public_pet_name);
   
-  // avatar_url을 CDN URL로 변환
+  // avatar_url을 CDN URL로 변환 (환경 변수로 제어)
   const card = data as EmergencyCard;
   if (card.avatar_url) {
-    card.avatar_url = convertToCdnUrl(card.avatar_url);
+    const useCdn = process.env.NEXT_PUBLIC_USE_CDN === 'true';
+    card.avatar_url = convertToCdnUrl(card.avatar_url, useCdn);
   }
   
   return card;
