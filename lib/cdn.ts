@@ -30,10 +30,10 @@ function extractStoragePath(supabaseUrl: string): string | null {
  * 
  * @param supabaseUrl - Supabase Storage URL
  *   예시: https://ucyotrsmsztivnqjmpge.supabase.co/storage/v1/object/public/aipet_images/pets/808be194-09ab-4d3f-bc1a-6ab20e9e4b1e/1764485407545_944659d1-c716-4743-b357-c88a5e29adeb.png
- * @param useCdn - CDN 사용 여부 (기본값: false, Workers가 안정화되면 true로 변경)
+ * @param useCdn - CDN 사용 여부 (기본값: true)
  * @returns CDN URL 또는 원본 Supabase URL
  */
-export function convertToCdnUrl(supabaseUrl: string | null, useCdn: boolean = false): string | null {
+export function convertToCdnUrl(supabaseUrl: string | null, useCdn: boolean = true): string | null {
   if (!supabaseUrl) {
     return null;
   }
