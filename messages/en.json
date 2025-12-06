@@ -1,0 +1,26 @@
+{
+  "emergencyContactInfo": "Emergency Contact Information",
+  "foundThisPet": "Did you find this pet?",
+  "pet": "Pet",
+  "lookingForOwner": "Looking for owner",
+  "clickToZoom": "Click the photo to view larger",
+  "ownerContact": "Owner Contact",
+  "noInfo": "No information",
+  "call": "Call",
+  "vetInfo": "Veterinary Information",
+  "allergiesNotes": "Allergies / Notes",
+  "footerMessage": "💚 Emergency contact card created by All-Pet app",
+  "lastUpdated": "Last updated",
+  "foundPetMessage": "🙏 If you found this pet,",
+  "contactImmediately": "please contact immediately",
+  "pleaseContact": "at the above contact information.",
+  "ownerWaiting": "The owner is anxiously waiting.",
+  "close": "Close",
+  "notFoundTitle": "Emergency contact information not found",
+  "notFoundDescription": "'s emergency contact information. Please contact the owner if found.",
+  "pageNotFound": "Page not found",
+  "pageNotExist": "The requested page does not exist.",
+  "backToHome": "Back to Home",
+  "checkQrNfc": "💡 Please check if the QR code or NFC tag is correct"
+}
+

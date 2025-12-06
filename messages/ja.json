@@ -1,0 +1,26 @@
+{
+  "emergencyContactInfo": "緊急連絡情報",
+  "foundThisPet": "このペットを見つけましたか？",
+  "pet": "ペット",
+  "lookingForOwner": "飼い主を探しています",
+  "clickToZoom": "写真をクリックすると拡大表示できます",
+  "ownerContact": "飼い主の連絡先",
+  "noInfo": "情報なし",
+  "call": "電話をかける",
+  "vetInfo": "動物病院情報",
+  "allergiesNotes": "アレルギー / 注意事項",
+  "footerMessage": "💚 All-Petアプリで作成された緊急連絡カードです",
+  "lastUpdated": "最終更新",
+  "foundPetMessage": "🙏 このペットを見つけた場合",
+  "contactImmediately": "上記の連絡先にすぐに連絡",
+  "pleaseContact": "してください。",
+  "ownerWaiting": "飼い主が心待ちにしています。",
+  "close": "閉じる",
+  "notFoundTitle": "緊急連絡情報が見つかりません",
+  "notFoundDescription": "の緊急連絡情報です。発見時は飼い主に連絡してください。",
+  "pageNotFound": "ページが見つかりません",
+  "pageNotExist": "リクエストされたページは存在しません。",
+  "backToHome": "ホームに戻る",
+  "checkQrNfc": "💡 QRコードやNFCタグが正しいか確認してください"
+}
+

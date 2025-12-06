@@ -1,4 +1,15 @@
-export default function NotFound() {
+import { getMessages, isValidLocale, defaultLocale } from '@/lib/i18n';
+import Link from 'next/link';
+import { headers } from 'next/headers';
+
+export default async function NotFound() {
+  // URL에서 locale 추출
+  const headersList = await headers();
+  const pathname = headersList.get('x-pathname') || '';
+  const localeMatch = pathname.match(/\/(ko|ja|en)\//);
+  const locale = localeMatch && isValidLocale(localeMatch[1]) ? localeMatch[1] : defaultLocale;
+  const messages = await getMessages(locale);
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center p-4">
       <div className="max-w-md w-full bg-white rounded-3xl shadow-2xl p-8 text-center">
@@ -9,26 +20,25 @@ export default function NotFound() {
             </svg>
           </div>
           <h1 className="text-3xl font-bold text-gray-900 mb-2">
-            긴급 카드를 찾을 수 없습니다
+            {messages.notFoundTitle}
           </h1>
           <p className="text-gray-600 leading-relaxed">
-            요청하신 긴급 연락 정보가 존재하지 않거나<br />
-            삭제되었을 수 있습니다.
+            {messages.pageNotExist}
           </p>
         </div>
 
         <div className="bg-blue-50 rounded-2xl p-4 mb-6">
           <p className="text-sm text-gray-700">
-            💡 QR 코드나 NFC 태그가 올바른지 확인해주세요
+            {messages.checkQrNfc}
           </p>
         </div>
 
-        <a 
-          href="/"
+        <Link 
+          href={`/${locale}`}
           className="inline-block bg-gradient-to-r from-blue-500 to-indigo-600 text-white px-8 py-3 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all transform hover:scale-105"
         >
-          홈으로 돌아가기
-        </a>
+          {messages.backToHome}
+        </Link>
       </div>
     </div>
   );
