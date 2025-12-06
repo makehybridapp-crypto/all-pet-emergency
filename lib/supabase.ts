@@ -1,4 +1,5 @@
 import { createClient } from '@supabase/supabase-js';
+import { convertToCdnUrl } from './cdn';
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
 const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
@@ -54,6 +55,13 @@ export async function getEmergencyCard(cardId: string): Promise<EmergencyCard | 
   }
 
   console.log('✅ Card found:', data.public_pet_name);
-  return data as EmergencyCard;
+  
+  // avatar_url을 CDN URL로 변환
+  const card = data as EmergencyCard;
+  if (card.avatar_url) {
+    card.avatar_url = convertToCdnUrl(card.avatar_url);
+  }
+  
+  return card;
 }
 

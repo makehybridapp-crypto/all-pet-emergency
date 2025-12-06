@@ -8,6 +8,11 @@ const nextConfig: NextConfig = {
         hostname: '*.supabase.co',
         pathname: '/storage/v1/object/public/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'twilight-shape-6c41.appaipet.workers.dev',
+        pathname: '/**',
+      },
     ],
   },
 };
